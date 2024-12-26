@@ -7,6 +7,9 @@ caminho_arquivo = "100cmd.md"
 link_antigo = "https://github.com/bobbyiliev/101-linux-commands-ebook/blob/main/"
 link_novo = "https://github.com/AnaMarcacini/Linux-lessons/blob/main/outros/101-linux-commands-ebook/"
 
+link_antigo = "https://github.com/AnaMarcacini/Linux-lessons/blob/main/"
+link_novo = ""
+
 # Função para substituir os links
 def substituir_links(caminho_arquivo, link_antigo, link_novo):
     try:
