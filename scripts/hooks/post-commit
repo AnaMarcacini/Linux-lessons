@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Adiciona as mudanças ao staging
+git add .
+
+# Verifica se há mudanças para commit
+if ! git diff --cached --quiet; then
+    # Se houver mudanças, faz o commit
+    git commit -m "Atualizações automáticas via script"
+    
+fi

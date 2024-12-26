@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Caminho para o script Python que gera o índice
+python scripts/md.py
+
+# # Adiciona as mudanças ao staging
+git add .
+# Permitir que o push aconteça normalmente depois
+exit 0
