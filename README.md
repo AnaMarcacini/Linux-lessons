@@ -7,6 +7,8 @@
     <td style="vertical-align: top; text-align: left; border: none;">
 <!-- INDICE -->
  - <a href="link">Básicos</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; - <a href="link">Listar Arquivos</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; - <a href="link">Permissões</a><br>
  - <a href="link">Partições</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp; - <a href="link">Ver Partições</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="link">1. Usando o comando lsblk</a><br>
@@ -19,7 +21,9 @@
 &nbsp;&nbsp;&nbsp;&nbsp; - <a href="link">Montar Partição</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="link">Montar a Partição (Caso Não Esteja Montada)</a><br>
  - <a href="link">Criar programas Personalizados</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; - <a href="link">Cuidado com o interpretador</a><br>
  - <a href="link">Verificar origem do programa</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; - <a href="link">ir para esse repo</a><br>
    </td>
     <td style="vertical-align: top; border: none;">
       <img src="src/pinguim/Linux1.gif" alt="Pinguim animado" width="200"/>
@@ -28,6 +32,20 @@
 </table>
 
 # Básicos
+## Listar Arquivos
+ls -l /usr/local/bin/token
+Isso mostrará as permissões
+
+## Permissões
+sudo chmod +x /usr/local/bin/token -> executável por todos os usuários
+Se você quiser que apenas você possa executá-lo, ajuste as permissões para o seu usuário:
+sudo chown $(whoami):$(whoami) <arquivo>
+sudo chmod 755 <arquivo>
+Ou, se você só precisa que o arquivo seja executável pelo seu usuário:
+
+sudo chmod u+x /usr/local/bin/token
+
+
 # Partições 
 ## Ver Partições 
 ### 1. Usando o comando lsblk
@@ -153,7 +171,8 @@ E depois recarregar o arquivo:
 source ~/.bashrc  # ou source ~/.profile
 ```
 Após esses passos, você deve ser capaz de executar o seu programa de qualquer lugar no terminal digitando meu_programa.
-
+## Cuidado com o interpretador
+Certifique-se de que o script x tenha o shebang correto na primeira linha para garantir que ele seja executado pelo interpretador correto. Por exemplo, para um script Bash, a primeira linha deve ser: _#!/bin/bash_ ou _#!/usr/bin/env bash_
 # Verificar origem do programa 
 Para descobrir exatamente onde o script está localizado, você pode usar o comando which:
 
@@ -168,3 +187,12 @@ which <comando criado >
 which nmp
 which cd
 ```
+## ir para esse repo 
+```bash
+cd $(dirname $(which token))
+```
+Explicação do comando:
+
+- which token: Isso retorna o caminho completo do seu script token.
+- dirname $(which token): Isso extrai o diretório do caminho completo retornado pelo which token.
+- cd $(dirname $(which token)): Isso muda o diretório para o diretório onde o script token está localizado.
