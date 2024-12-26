@@ -18,6 +18,8 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="link">Discos (gnome-disks)</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp; - <a href="link">Montar Partição</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="link">Montar a Partição (Caso Não Esteja Montada)</a><br>
+ - <a href="link">Criar programas Personalizados</a><br>
+ - <a href="link">Verificar origem do programa</a><br>
    </td>
     <td style="vertical-align: top; border: none;">
       <img src="src/pinguim/Linux1.gif" alt="Pinguim animado" width="200"/>
@@ -116,3 +118,53 @@ cd /mnt/Dados
 
 
 
+# Criar programas Personalizados
+Local do executavel : /usr/local/bin
+exemplo : /usr/local/bin/traduz
+
+
+Suponha que você tenha um arquivo chamado meu_programa.c. Você pode compilar este arquivo usando gcc (GNU Compiler Collection):
+
+```sh
+gcc meu_programa.c -o meu_programa
+```
+
+Mover o executável para /usr/local/bin (requer permissão de superusuário):
+
+```sh
+sudo mv meu_programa /usr/local/bin/
+```
+
+Mover o executável para ~/bin (não requer permissão de superusuário):
+
+```sh
+mv meu_programa ~/bin/
+```
+
+
+Nota: Para garantir que ~/bin esteja no seu PATH, você pode adicionar a seguinte linha ao seu arquivo .bashrc ou .profile:
+
+```sh
+export PATH=$HOME/bin:$PATH
+```
+E depois recarregar o arquivo:
+
+```sh
+source ~/.bashrc  # ou source ~/.profile
+```
+Após esses passos, você deve ser capaz de executar o seu programa de qualquer lugar no terminal digitando meu_programa.
+
+# Verificar origem do programa 
+Para descobrir exatamente onde o script está localizado, você pode usar o comando which:
+
+```sh
+which <codigo>
+```
+Exemplo :
+
+```sh
+which python
+which <comando criado >
+which nmp
+which cd
+```
