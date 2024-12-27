@@ -7,7 +7,7 @@
     <td style="vertical-align: top; text-align: left; border: none;">
 <!-- INDICE -->
  - <a href="#básicos">Básicos</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#sitema-de-arquivos">Sitema de Arquivos</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#sistema-de-arquivos">Sistema de Arquivos</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp; - <a href="#listar-arquivos">Listar Arquivos</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp; - <a href="#permissões">Permissões</a><br>
  - <a href="#partições">Partições</a><br>
@@ -30,6 +30,11 @@
 &nbsp;&nbsp;&nbsp;&nbsp; - <a href="#pipes">Pipes</a><br>
  - <a href="#variáveis">Variáveis</a><br>
  - <a href="#scripts-bash">Scripts Bash</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#operações-matemáticas">Operações Matemáticas</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#operadores-lógicos">Operadores Lógicos</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#comparadores-numéricos">Comparadores Numéricos</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#operadores-de-comparação-de-strings">Operadores de Comparação de Strings</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#comparadores-de-arquivos">Comparadores de Arquivos</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp; - <a href="#variaveis">Variaveis</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp; - <a href="#operações">Operações</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp; - <a href="#if-else">If-else</a><br>
@@ -48,7 +53,7 @@
 </table>
 
 # Básicos
-## Sitema de Arquivos 
+## Sistema de Arquivos 
 File Hierarchy Standard (FHS)
 
 | Path     | Content                             |
@@ -314,16 +319,126 @@ Para rodar o script, basta usar:
 ./meu_script.sh
 ```
 
+## Operações Matemáticas
+
+| Operador | Descrição                      | Exemplo                  | Resultado |
+|----------|--------------------------------|--------------------------|-----------|
+| `+`      | Adição                         | `echo $((3 + 5))`        | `8`       |
+| `-`      | Subtração                      | `echo $((10 - 7))`       | `3`       |
+| `*`      | Multiplicação                  | `echo $((4 * 6))`        | `24`      |
+| `/`      | Divisão                        | `echo $((12 / 4))`       | `3`       |
+| `%`      | Módulo (resto da divisão)      | `echo $((10 % 3))`       | `1`       |
+| `**`     | Potência                       | `echo $((2 ** 3))`       | `8`       |
+| `+=`     | Incremento com soma            | `x=5; x+=3; echo $x`     | `8`       |
+| `-=`     | Decremento com subtração       | `x=5; x-=2; echo $x`     | `3`       |
+| `*=`     | Incremento com multiplicação   | `x=5; x*=2; echo $x`     | `10`      |
+| `/=`     | Decremento com divisão         | `x=10; x/=2; echo $x`    | `5`       |
+|`++`|Incremento| Aumenta o valor de uma variável em 1	|`((a++))`| 
+|`--`|Decremento| Diminui o valor de uma variável em 1	|`((a--))`| 
+---
+
+## Operadores Lógicos
+
+| Operador | Descrição                         | Exemplo                            | Resultado |
+|----------|-----------------------------------|------------------------------------|-----------|
+| `&&` ou `-a`    | E lógico (true se ambas forem true) | `[ $a -lt 10 ] && [ $b -gt 5 ]`   | `true`    |
+| `\|\|` ou ``-o  | OU lógico (true se uma for true)   | `[ $a -lt 10 ] \|\| [ $b -gt 5 ]` | `true`    |
+| `!`      | NÃO lógico (inverte o valor lógico) | `[ ! $a -lt 10 ]`                 | `false`   |
+
+---
+
+## Comparadores Numéricos
+
+| Operador | Descrição              | Exemplo             | Resultado    |
+|----------|------------------------|---------------------|--------------|
+| `-eq` ou `==`   | Igual a                | `[ $a -eq $b ]` ou `[ 5 == 5 ]`    | `true/false` |
+| `-ne` ou `!=`   | Diferente de           | `[ $a -ne $b ]`   ou `[ 5 != 3 ]`  | `true/false` |
+| `-lt`    | Menor que              | `[ $a -lt $b ]`     | `true/false` |
+| `-le`    | Menor ou igual a       | `[ $a -le $b ]`     | `true/false` |
+| `-gt`    | Maior que              | `[ $a -gt $b ]`     | `true/false` |
+| `-ge`    | Maior ou igual a       | `[ $a -ge $b ]`     | `true/false` |
+
+---
+## Operadores de Comparação de Strings 
+***Comparadores de Strings***
+
+| Operador | Descrição              | Exemplo             | Resultado    |
+|----------|------------------------|---------------------|--------------|
+| `=`      | Strings são iguais     | `[ "$a" = "$b" ]`   | `true/false` |
+| `!=`     | Strings são diferentes | `[ "$a" != "$b" ]`  | `true/false` |
+| `-z`     | String é vazia         | `[ -z "$a" ]`       | `true/false` |
+| `-n`     | String não é vazia     | `[ -n "$a" ]`       | `true/false` |
+
+---
+
+
+| Operador | Descrição                 | Exemplo                 | Resultado |
+|----------|---------------------------|-------------------------|-----------|
+| `==`     | Igual a                  | `[ "abc" == "abc" ]`    | `true`    |
+| `!=`     | Diferente de             | `[ "abc" != "def" ]`    | `true`    |
+| `<`      | Menor lexicograficamente | `[ "abc" < "def" ]`     | `true`    |
+| `>`      | Maior lexicograficamente | `[ "def" > "abc" ]`     | `true`    |
+| `-z`     | String vazia             | `[ -z "" ]`             | `true`    |
+| `-n`     | String não vazia         | `[ -n "texto" ]`        | `true`    |
+
+**Nota:** Use aspas ao comparar strings para evitar erros.
+
+## Comparadores de Arquivos
+
+| Operador | Descrição                      | Exemplo                 | Resultado    |
+|----------|--------------------------------|-------------------------|--------------|
+| `-e`     | Arquivo ou diretório existe                | `[ -e arquivo.txt ]`    | `true/false` |
+| `-f`     | Arquivo existe e é um arquivo regular (comum)          | `[ -f arquivo.txt ]`    | `true/false` |
+| `-d`     | Existe e é um diretório                | `[ -d diretorio/ ]`     | `true/false` |
+| `-r`     | Possui permissão de leitura   | `[ -r arquivo.txt ]`    | `true/false` |
+| `-w`     | Possui permissão de escrita   | `[ -w arquivo.txt ]`    | `true/false` |
+| `-x`     | Possui permissão de execução  | `[ -x script.sh ]`      | `true/false` |
+| `-s`     | Não está vazio                | `[ -s arquivo.txt ]`    | `true/false` |
+
+Um arquivo regular é o tipo de arquivo mais comum em sistemas Unix/Linux. Ele contém dados, como texto, código-fonte, binários, ou qualquer outro tipo de conteúdo. Em contraste, existem outros tipos de arquivos no sistema, como diretórios, links simbólicos, dispositivos, entre outros.
+
+Exemplos de Arquivo Regular
+Um arquivo de texto, como documento.txt.
+Um script ou programa, como script.sh.
+Um arquivo executável, como programa.
+```bash
+#!/bin/bash
+
+arquivo="documento.txt"
+
+if [ -f "$arquivo" ]; then
+  echo "$arquivo é um arquivo regular."
+else
+  echo "$arquivo não é um arquivo regular ou não existe."
+fi
+```
+
+
+O que ***NÃO*** é um arquivo regular
+Diretórios: Pastas do sistema, como /home/usuario. Para verificar diretórios, usamos -d.
+```bash
+if [ -d "meu_diretorio" ]; then echo "É um diretório."; fi
+```
+
+Links Simbólicos: Referências para outro arquivo ou diretório. Para verificar links simbólicos, usamos -L.
+```bash
+if [ -L "link_para_arquivo" ]; then echo "É um link simbólico."; fi
+```
+Dispositivos: Arquivos especiais usados para interagir com hardware, como /dev/sda (um disco rígido).
+Sockets e Pipes: Usados para comunicação entre processos.
+
+
+
 ## Variaveis 
 
 ```bash
-
 #!/bin/bash
 nome="João"
 echo "Olá, $nome!"
 ## If-Else:
 ```
 
+Cuidado: não pode ter espaço (nome = ) tem que ser sem espaço (nome=)
 ## Operações 
 
 ```bash
@@ -369,6 +484,7 @@ if [ $nome == "João" ] && [ $idade -ge 18 ]; then
 fi
 
 ```
+
 
 ## Loop usando o For:
 
