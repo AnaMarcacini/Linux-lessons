@@ -252,7 +252,6 @@ Explicação do comando:
 - which token: Isso retorna o caminho completo do seu script token.
 - dirname $(which token): Isso extrai o diretório do caminho completo retornado pelo which token.
 - cd $(dirname $(which token)): Isso muda o diretório para o diretório onde o script token está localizado.
-![alt text](src/Shell/shell-scripting-linux.png)
 
 
 # Redirecionamento e pipes
@@ -274,6 +273,7 @@ nome="João"
 Usando a variável:
 echo $nome: Exibe o conteúdo da variável.
 
+![alt text](src/Shell/shell-scripting-linux.png)
 
 # Scripts Bash 
 
