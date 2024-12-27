@@ -64,7 +64,7 @@ def escrever_indice(arquivo_md,indice,conteudo):
 
         for nivel, titulo, link in indice:
             indentacao = "&nbsp;&nbsp;&nbsp;&nbsp;" * (nivel - 1)
-            file.write(f'{indentacao} - <a href="link">{titulo}</a><br>')  # Adiciona cada título formatado
+            file.write(f'{indentacao} - <a href="#{link}">{titulo}</a><br>')  # Adiciona cada título formatado
             file.write("\n")
         file.writelines(conteudo)
 
