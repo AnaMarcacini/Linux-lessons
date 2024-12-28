@@ -8,8 +8,11 @@
 <!-- INDICE -->
  - <a href="#básicos">Básicos</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp; - <a href="#sistema-de-arquivos">Sistema de Arquivos</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#comandos-basicos">Comandos Basicos</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp; - <a href="#listar-arquivos">Listar Arquivos</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp; - <a href="#permissões">Permissões</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#visualizando-permissões">Visualizando Permissões</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#alterando-permissões">Alterando Permissões</a><br>
  - <a href="#partições">Partições</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp; - <a href="#ver-partições">Ver Partições</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#1-usando-o-comando-lsblk">1. Usando o comando lsblk</a><br>
@@ -27,8 +30,15 @@
 &nbsp;&nbsp;&nbsp;&nbsp; - <a href="#ir-para-esse-repo">ir para esse repo</a><br>
  - <a href="#redirecionamento-e-pipes">Redirecionamento e pipes</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp; - <a href="#redirecionando-a-saída-para-um-arquivo">Redirecionando a saída para um arquivo</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#pipes">Pipes</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#redirecionando-de-entrada">Redirecionando de Entrada</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#redirecionamento-de-erros-2>-e-2>>">Redirecionamento de Erros (2> e 2>>)</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#redirecionamento-de-saída-e-erros-&>-ou-2>&1">Redirecionamento de Saída e Erros (&> ou 2>&1)</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#entrada-e-saída-padrão">Entrada e Saída Padrão</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#pipes-`|`">Pipes (`|`)</a><br>
  - <a href="#variáveis">Variáveis</a><br>
+ - <a href="#operadores-bash">Operadores Bash</a><br>
+ - <a href="#operadores-de-comparação">Operadores de Comparação</a><br>
+ - <a href="#operadores-de-strings">Operadores de Strings</a><br>
  - <a href="#scripts-bash">Scripts Bash</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp; - <a href="#operações-matemáticas">Operações Matemáticas</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp; - <a href="#operadores-lógicos">Operadores Lógicos</a><br>
@@ -36,15 +46,28 @@
 &nbsp;&nbsp;&nbsp;&nbsp; - <a href="#operadores-de-comparação-de-strings">Operadores de Comparação de Strings</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp; - <a href="#comparadores-de-arquivos">Comparadores de Arquivos</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp; - <a href="#variaveis">Variaveis</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#variaveis-locais-e-globais-escopo">Variaveis Locais e Globais (Escopo)</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp; - <a href="#operações">Operações</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp; - <a href="#if-else">If-else</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#operador-lógico">Operador Lógico</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#loop-usando-o-for">Loop usando o For</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#loop-usando-o-while">Loop usando o While</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#com-operador-lógico">Com operador lógico</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#loops">LOOPs</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#loop-usando-o-for">Loop usando o For</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#loop-usando-o-while">Loop usando o While</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#loop-usando-o-until">Loop usando o until</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#switch-case">Switch Case</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp; - <a href="#funções">Funções</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#função-com-parametros">Função com Parametros</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#função-com-retorno">Função com Retorno</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#exemplo-de-utilização">Exemplo de utilização</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp; - <a href="#input">Input</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#pipe">Pipe</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#redirecionamento-e-pipe">Redirecionamento e Pipe</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#entrada-e-saída-padrão">Entrada e Saída Padrão</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#captura-de-erros">Captura de erros</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#tratamento-de-erros">Tratamento de Erros</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp; - <a href="#manipulando-arquivos">Manipulando Arquivos</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#ler-arquivos">Ler Arquivos</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#lendo-um-arquivo-linha-por-linha">Lendo um arquivo linha por linha</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#ler-primeiras-e-ultimas-linhas">Ler primeiras e ultimas linhas</a><br>
    </td>
     <td style="vertical-align: top; border: none;">
       <img src="src/pinguim/Linux1.gif" alt="Pinguim animado" width="200"/>
@@ -73,39 +96,61 @@ File Hierarchy Standard (FHS)
 | `/run`   | PID files of running processes      |
 
 ---
-
+## Comandos Basicos
 Aqui estão alguns comandos básicos que você vai usar frequentemente:
 
 ls: Lista arquivos e diretórios no diretório atual.
     Exemplo: ls ou ls -l (para listar detalhes).
-cd: Muda o diretório de trabalho.
+cd: navega entre diretorios.
     Exemplo: cd /home/usuario ou cd .. (para voltar um diretório).
-pwd: Mostra o diretório atual em que você está.
-    Exemplo: pwd.
+pwd: Mostra o diretório atual 
 touch: Cria um novo arquivo vazio.
     Exemplo: touch novo_arquivo.txt.
 mkdir: Cria um novo diretório.
     Exemplo: mkdir novo_diretorio.
-rm: Remove arquivos ou diretórios.
+rm [nome]: Remove arquivos ou diretórios.
+    rm -r: Remove diretórios recursivamente.
     Exemplo: rm arquivo.txt ou rm -r diretorio (para remover diretórios).
 cp: Copia arquivos ou diretórios.
-    Exemplo: cp arquivo.txt copia_arquivo.txt.
+    Exemplo: cp arquivo.txt copia.txt.
 mv: Move ou renomeia arquivos e diretórios.
     Exemplo: mv arquivo.txt novo_diretorio/ ou mv arquivo.txt novo_nome.txt.
-
+touch [nome]: Cria um novo arquivo vazio.
+    Exemplo: touch arquivo.txt
 ## Listar Arquivos
 ls -l /usr/local/bin/token
-Isso mostrará as permissões
+
 
 ## Permissões
-sudo chmod +x /usr/local/bin/token -> executável por todos os usuários
+### Visualizando Permissões
+`ls -l` : Isso mostrará a lista de arquivos do diretorio e suas permissões
+
+    -rw-r--r-- 1 usuario grupo  1234 Dec 27 10:00 arquivo.txt
+
+O primeiro conjunto (-rw-r--r--) indica permissões:
+
+    r: Leitura (read).
+    w: Escrita (write).
+    x: Execução (execução).
+### Alterando Permissões
+
+```bash
+chmod +x script.sh   # Torna o arquivo executável executável por todos os usuários
+chmod 644 arquivo.txt  # Define permissões numéricas
+```
+
 Se você quiser que apenas você possa executá-lo, ajuste as permissões para o seu usuário:
+
+```bash
 sudo chown $(whoami):$(whoami) <arquivo>
 sudo chmod 755 <arquivo>
+```
+
 Ou, se você só precisa que o arquivo seja executável pelo seu usuário:
 
+```bash
 sudo chmod u+x /usr/local/bin/token
-
+```
 
 # Partições 
 ## Ver Partições 
@@ -262,21 +307,156 @@ Explicação do comando:
 # Redirecionamento e pipes
 Bash permite redirecionar a saída de comandos para arquivos ou até mesmo usá-los em conjunto com outros comandos através de pipes (|).
 
-## Redirecionando a saída para um arquivo:
+## Redirecionando a saída para um arquivo
 
+  * `>` : Redireciona a saída para um arquivo (sobrescreve).
+  * `>>` : Redireciona a saída para um arquivo (anexa).
+
+```bash
 echo "texto" > arquivo.txt: Cria (ou substitui) um arquivo com o texto.
 echo "texto" >> arquivo.txt: Adiciona ao final de um arquivo existente.
-## Pipes:
+```
 
-ls | grep "documento": Lista arquivos e filtra com grep para mostrar apenas os que contêm "documento".
+## Redirecionando de Entrada
+
+Permite usar o conteúdo de um arquivo como entrada para um comando.
+```bash
+while read linha; do
+    echo "Linha do arquivo: $linha"
+done < arquivo.txt
+```
+
+## Redirecionamento de Erros (2> e 2>>)
+
+Captura mensagens de erro geradas por comandos.
+
+Exemplo:
+
+```sh
+ls /caminho/invalido 2> erros.log
+```
+
+      erros.log:
+        ls: cannot access '/caminho/invalido': No such file or directory
+
+## Redirecionamento de Saída e Erros (&> ou 2>&1)
+
+Redireciona saída padrão e erros para o mesmo destino.
+
+Exemplo:
+
+```sh
+comando &> tudo.log
+```
+
+## Entrada e Saída Padrão
+
+    Descritores de Arquivo
+      0: Entrada padrão (stdin)
+      1: Saída padrão (stdout)
+      2: Erro padrão (stderr)
+
+Exemplo de Uso Explícito:
+
+```bash
+comando 1> saida.txt 2> erros.txt
+```
+      Conteúdo de saida.txt (se houver saída normal):
+          Saída do comando aqui
+      Conteúdo de erros.txt (se houver erros):
+          Erro do comando aqui
+
+
+## Pipes (`|`):
+
+Encaminha a saída de um comando como entrada para outro
+
+`ls | grep "documento"`: Lista arquivos e filtra com grep para mostrar apenas os que contêm "documento".
 
 # Variáveis
 Você pode criar variáveis para armazenar dados.
 
-Definindo uma variável:
-nome="João"
-Usando a variável:
-echo $nome: Exibe o conteúdo da variável.
+Definindo uma variável: `nome="João"`
+
+Usando a variável: `echo $nome` # Exibe o conteúdo da variável.
+
+```bash
+variavel="valor"
+echo $variavel  # Exibe o valor da variável
+```
+    Regras para Nomes de Variáveis:
+      * Devem começar com uma letra ou sublinhado (_).
+      * Podem conter letras, números e sublinhados, mas não espaços.
+      * São sensíveis a maiúsculas e minúsculas.
+
+```bash
+## Exemplos
+nome="Maria"
+id=123
+_usuario="admin"
+echo "Usuário: $nome, ID: $id"
+```
+# Operadores Bash
+O Bash suporta operações matemáticas usando o comando expr ou $(( )):
+```bash
+x=10
+y=5
+
+# Soma
+echo $((x + y))
+
+# Subtração
+echo $((x - y))
+
+# Multiplicação
+echo $((x * y))
+
+# Divisão
+echo $((x / y))
+
+# Módulo
+echo $((x % y))
+```
+
+# Operadores de Comparação
+
+Comparações numéricas são realizadas usando os seguintes operadores:
+
+-`eq`: Igual a.
+
+-`ne`: Diferente de.
+
+-`lt`: Menor que.
+
+-`le`: Menor ou igual a.
+
+-`gt`: Maior que.
+
+-`ge`: Maior ou igual a.
+
+```bash
+if [ $x -gt $y ]; then
+  echo "$x é maior que $y"
+fi
+```
+# Operadores de Strings
+
+Para strings, os operadores são:
+
+-`=`: Igual a.
+
+-`!`=: Diferente de.
+
+-`z`: Verdadeiro se a string estiver vazia.
+
+-`n`: Verdadeiro se a string não estiver vazia.
+
+```bash
+str="Hello"
+if [ -n "$str" ]; then
+  echo "A string não está vazia."
+fi
+```
 
 ![alt text](src/Shell/shell-scripting-linux.png)
 
@@ -286,7 +466,10 @@ echo $nome: Exibe o conteúdo da variável.
   <tr>
     <td style="vertical-align: top; text-align: justify; border: none;">
     1. O que é Bash?
-    Bash (Bourne Again Shell) é um interpretador de comandos usado em sistemas Unix, como Linux e macOS. Ele permite que você execute comandos para interagir com o sistema operacional de maneira eficiente. É importante deixar o arquivo .sh executável.
+    Bash (Bourne Again Shell) é um interpretador de comandos usado em sistemas Unix, como Linux e macOS. Ele permite que você interaja com o sistema operacional executando comandos e criando scripts para automatizar tarefas. É importante deixar o arquivo .sh executável.
+    Principais Características do Bash:
+        É amplamente utilizado em distribuições Linux.Suporta programção de scripts para automação de tarefas repetitivas.
+        Permite gerenciar arquivos, processos e configurar o sistema.
     No Linux, cada arquivo tem permissões de leitura, gravação e execução, que podem ser ajustadas com o comando chmod.<br>
       chmod +x script.sh: Torna o arquivo executável.<br>
       chmod 755 arquivo.txt: Define permissões para o dono do arquivo, grupo e outros.
@@ -299,6 +482,8 @@ echo $nome: Exibe o conteúdo da variável.
   </tr>
 </table>
 
+bash --version
+Se você estiver no Windows, pode usar o Windows Subsystem for Linux (WSL) ou instalar um emulador de terminal como o Git Bash.
 
 ```bash
 #!/bin/bash
@@ -429,7 +614,7 @@ Sockets e Pipes: Usados para comunicação entre processos.
 
 
 
-## Variaveis 
+## Variaveis
 
 ```bash
 #!/bin/bash
@@ -439,7 +624,28 @@ echo "Olá, $nome!"
 ```
 
 Cuidado: não pode ter espaço (nome = ) tem que ser sem espaço (nome=)
-## Operações 
+### Variaveis Locais e Globais (Escopo)
+
+No Bash, as variáveis são globais por padrão, ou seja, podem ser acessadas fora da função. Para criar variáveis locais, use a palavra-chave `local`.
+```bash
+minha_funcao() {
+    local variavel_local="local"
+    variavel_global="global"
+    echo "Dentro da função: $variavel_local"
+}
+
+minha_funcao
+
+# Tentativa de acessar as variáveis fora da função
+echo "Fora da função: $variavel_global"
+echo "Fora da função: $variavel_local"  # Não estará disponível
+```
+Saída:
+
+    Dentro da função: local
+    Fora da função: global
+    Fora da função:
+## Operações
 
 ```bash
 
@@ -451,6 +657,25 @@ echo "A soma de $a e $b é $soma"
 ```
 
 ## If-else
+
+*Estrutura:*
+
+```bash
+
+if [ condicao ]; then
+    # Comandos executados se a condição for verdadeira
+elif [ outra_condicao ]; then
+    # Comandos executados se outra_condicao for verdadeira
+else
+    # Comandos executados se nenhuma condição for verdadeira
+fi
+```
+
+*Estrutura Simplificada (operador ternário)*
+
+```bash
+[ $num -gt 5 ] && echo "Maior" || echo "Menor ou igual"
+```
 
 ```bash
 if [ $nome == "João" ]; then
@@ -468,11 +693,20 @@ if [ $idade -ge 18 ]; then
 else
   echo "Você é menor de idade."
 fi
+###################################
+num=10
 
+if [ $num -gt 5 ]; then
+    echo "$num é maior que 5."
+elif [ $num -eq 5 ]; then
+    echo "$num é igual a 5."
+else
+    echo "$num é menor que 5."
+fi
 
 ```
 
-## Operador Lógico
+### Com operador lógico
 
 ```bash
 #!/bin/bash
@@ -485,17 +719,37 @@ fi
 
 ```
 
-
-## Loop usando o For:
+## LOOPs
+### Loop usando o For:
 
 ```bash
+for item in lista; do
+    # Comandos executados para cada item
+done
+
+for i in 1 2 3 4 5; do
+    echo "Iteração: $i"
+done
+
 for i in {1..5}; do
   echo "Número $i"
 done
 ```
-## Loop usando o While:
+### Loop usando o While:
 
 ```bash
+while [ condicao ]; do
+    # Comandos executados enquanto a condição for verdadeira
+done
+```
+
+```bash
+count=1
+while [ $count -le 5 ]; do
+    echo "Contagem: $count"
+    count=$((count + 1))
+done
+###############################
 i=1
 while [ $i -le 5 ]; do
   echo "Número $i"
@@ -503,7 +757,72 @@ while [ $i -le 5 ]; do
 done
 ```
 
+### Loop usando o until
+O loop until executa comandos até que uma condição se torne verdadeira.
+
+Sintaxe:
+```bash
+until [ condicao ]; do
+    # Comandos executados até que a condição seja verdadeira
+done
+```
+Exemplo:
+```bash
+count=1
+until [ $count -gt 5 ]; do
+    echo "Contagem: $count"
+    count=$((count + 1))
+done
+```
+## Switch Case
+
+A instrução case é usada para comparar uma variável com vários valores e executar comandos correspondentes.
+
+Sintaxe:
+```bash
+case variavel in
+    valor1)
+        # Comandos para valor1
+        ;;
+    valor2)
+        # Comandos para valor2
+        ;;
+    *)
+        # Comandos para qualquer outro valor
+        ;;
+esac
+```
+
+Exemplo:
+```bash
+read -p "Digite um dia da semana: " dia
+
+case $dia in
+    "segunda")
+        echo "Início da semana!"
+        ;;
+    "sexta")
+        echo "Fim de semana chegando!"
+        ;;
+    *)
+        echo "Dia normal."
+        ;;
+esac
+```
+
+
 ## Funções
+```bash
+###############################
+saudacao() {
+    echo "Olá, seja bem-vindo ao script Bash!"
+}
+
+# Chamada da função
+saudacao
+```
+
+### Função com Parametros
 ```bash
 funcao_ola() {
   echo "Olá, $1!"
@@ -518,18 +837,95 @@ saudacao() {
 
 saudacao "Maria"
 saudacao "João"
-
 ```
+
 O $1 representa o primeiro argumento passado para a função. Você pode passar múltiplos parâmetros para funções, como $2, $3, etc.
 
+### Função com Retorno
+Embora o Bash não suporte diretamente retornos como linguagens tradicionais, você pode usar comandos como `return` para retornar códigos de status ou `echo` para devolver valores.
+
+```bash
+soma() {
+    return $(( $1 + $2 ))
+}
+
+soma 3 7
+resultado=$?
+echo "Resultado da soma: $resultado"
+```
+```bash
+multiplicar() {
+    echo $(( $1 * $2 ))
+}
+
+resultado=$(multiplicar 4 5)
+echo "Resultado da multiplicação: $resultado"
+```
+
+### Exemplo de utilização
+
+```bash
+exibir_menu() {
+    echo "1. Exibir data atual"
+    echo "2. Listar arquivos no diretório atual"
+    echo "3. Sair"
+}
+
+exibir_data() {
+    echo "Data atual: $(date)"
+}
+
+listar_arquivos() {
+    echo "Arquivos no diretório atual:"
+    ls
+}
+
+while true; do
+    exibir_menu
+    read -p "Escolha uma opção: " opcao
+
+    case $opcao in
+        1)
+            exibir_data
+            ;;
+        2)
+            listar_arquivos
+            ;;
+        3)
+            echo "Saindo..."
+            break
+            ;;
+        *)
+            echo "Opção inválida. Tente novamente."
+            ;;
+    esac
+    echo
+done
+```
+
 ## Input
+
 ```bash
 #!/bin/bash
 echo "Qual é o seu nome?"
 read nome
 echo "Olá, $nome!"
 ```
-## Pipe
+
+    Opções Comuns do read:
+      -p: Exibe uma mensagem antes de capturar a entrada.
+      -s: Oculta a entrada do usuário (ideal para   senhas).
+      -n: Limita o número de caracteres que podem ser inseridos.
+
+```bash
+read -p "Qual é o seu nome? " nome
+echo "Olá, $nome!"
+#########################################
+read -sp "Digite sua senha: " senha
+echo "\nSenha armazenada com sucesso."
+```
+
+## Redirecionamento e Pipe
 Você pode redirecionar a saída de um comando para um arquivo ou passar a saída de um comando para outro comando.
 
 Redirecionando saída para um arquivo:
@@ -545,7 +941,35 @@ Usando pipes (|): O comando grep pode ser combinado com outros comandos para fil
 #!/bin/bash
 ls | grep "documento"
 ```
+Combinações de comandos também são possíveis:
+```bash
+cat arquivo.txt | sort | uniq
+```
+
+### Entrada e Saída Padrão
+
+    Descritores de Arquivo
+      0: Entrada padrão (stdin)
+      1: Saída padrão (stdout)
+      2: Erro padrão (stderr)
+
+Exemplo de Uso Explícito:
+
+```bash
+comando 1> saida.txt 2> erros.txt
+```
+      Conteúdo de saida.txt (se houver saída normal):
+          Saída do comando aqui
+      Conteúdo de erros.txt (se houver erros):
+          Erro do comando aqui
+## Captura de erros
+
+[VER AQUI](#redirecionamento-de-erros-2-e-2)
+
+## Tratamento de Erros
+
 ## Manipulando Arquivos
+
 Você pode criar, ler, escrever e manipular arquivos dentro de um script.
 
 Criando e escrevendo em um arquivo:
@@ -554,11 +978,74 @@ Criando e escrevendo em um arquivo:
 #!/bin/bash
 echo "Este é um arquivo de texto" > arquivo.txt
 ```
-Lendo um arquivo linha por linha:
+
+```bash
+cat > arquivo.txt << EOF
+Linha 1
+Linha 2
+EOF
+```
+
+    Conteúdo de arquivo.txt:
+      Linha 1
+      Linha 2
+
+### Ler Arquivos
+
+```bash
+cat arquivo.txt
+```
+
+### Lendo um arquivo linha por linha:
 
 ```bash
 #!/bin/bash
 while IFS= read -r linha; do
   echo $linha
 done < arquivo.txt
+##################################
+while read linha; do
+    echo "$linha"
+done < arquivo.txt
 ```
+
+### Ler primeiras e ultimas linhas
+
+```bash
+head -n 5 arquivo.txt  # Exibe as primeiras 5 linhas
+tail -n 5 arquivo.txt  # Exibe as últimas 5 linhas
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
