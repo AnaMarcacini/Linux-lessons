@@ -59,15 +59,22 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#função-com-parametros">Função com Parametros</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#função-com-retorno">Função com Retorno</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#exemplo-de-utilização">Exemplo de utilização</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#parâmetros-e-argumentos-do-script">Parâmetros e Argumentos do Script</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp; - <a href="#input">Input</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp; - <a href="#redirecionamento-e-pipe">Redirecionamento e Pipe</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#entrada-e-saída-padrão">Entrada e Saída Padrão</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp; - <a href="#captura-de-erros">Captura de erros</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp; - <a href="#tratamento-de-erros">Tratamento de Erros</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#interromper-o-script-em-caso-de-erros">Interromper o Script em Caso de Erros</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#verificar-status-de-saída-do-comando">Verificar Status de Saída do Comando</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#função-de-tratamento-de-erro">Função de Tratamento de Erro</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#regex">REGEX</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#depuração-de-scripts">Depuração de Scripts</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp; - <a href="#manipulando-arquivos">Manipulando Arquivos</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#ler-arquivos">Ler Arquivos</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#lendo-um-arquivo-linha-por-linha">Lendo um arquivo linha por linha</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#ler-primeiras-e-ultimas-linhas">Ler primeiras e ultimas linhas</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#scripts-modulares---chamando-outros-scripts">Scripts Modulares - Chamando outros Scripts</a><br>
    </td>
     <td style="vertical-align: top; border: none;">
       <img src="src/pinguim/Linux1.gif" alt="Pinguim animado" width="200"/>
@@ -842,6 +849,7 @@ saudacao "João"
 O $1 representa o primeiro argumento passado para a função. Você pode passar múltiplos parâmetros para funções, como $2, $3, etc.
 
 ### Função com Retorno
+
 Embora o Bash não suporte diretamente retornos como linguagens tradicionais, você pode usar comandos como `return` para retornar códigos de status ou `echo` para devolver valores.
 
 ```bash
@@ -902,6 +910,39 @@ while true; do
     echo
 done
 ```
+
+## Parâmetros e Argumentos do Script
+
+Scripts Bash podem aceitar argumentos da linha de comando.
+
+Exemplo:
+```bash
+#!/bin/bash
+
+# Exibe o primeiro e o segundo argumentos
+echo "Argumento 1: $1"
+echo "Argumento 2: $2"
+
+Executando o Script:
+
+./meu_script.sh arg1 arg2
+```
+
+    Saída:
+
+    Argumento 1: arg1
+    Argumento 2: arg2
+
+Usando shift para Processar Vários Argumentos
+
+```bash
+while [[ $# -gt 0 ]]; do
+    echo "Argumento atual: $1"
+    shift
+done
+```
+
+
 
 ## Input
 
@@ -968,6 +1009,57 @@ comando 1> saida.txt 2> erros.txt
 
 ## Tratamento de Erros
 
+### Interromper o Script em Caso de Erros
+
+Adicione set -e no início do script para parar a execução ao encontrar um erro.
+
+```bash
+# Interrompe o script ao primeiro erro
+set -e
+cp arquivo_nao_existente.txt destino/
+```
+### Verificar Status de Saída do Comando
+
+Use $? para capturar o status do último comando executado (0 indica sucesso).
+
+```bash
+cp arquivo.txt destino/
+if [[ $? -ne 0 ]]; then
+    echo "Erro ao copiar o arquivo."
+    exit 1
+fi
+```
+
+### Função de Tratamento de Erro
+
+```bash
+
+tratar_erro() {
+    echo "Erro na linha $1."
+    exit 1
+}
+
+trap 'tratar_erro $LINENO' ERR
+```
+
+### REGEX
+
+```bash
+read -p "Digite um número: " numero
+if [[ ! $numero =~ ^[0-9]+$ ]]; then
+    echo "Por favor, insira um número válido."
+    exit 1
+fi
+
+```
+
+## Depuração de Scripts
+
+**Modo Verbose e Debug**
+
+      - `bash -v script.sh`: Exibe cada linha antes de executá-la.
+      - `bash -x script.sh`: Mostra cada comando e sua saída durante a execução.
+
 ## Manipulando Arquivos
 
 Você pode criar, ler, escrever e manipular arquivos dentro de um script.
@@ -1018,6 +1110,27 @@ tail -n 5 arquivo.txt  # Exibe as últimas 5 linhas
 
 
 
+## Scripts Modulares - Chamando outros Scripts
+
+Divida o script em módulos reutilizáveis.
+
+Exemplo de Script Principal:
+```bash
+#!/bin/bash
+
+source funcoes.sh
+
+saudacao "Mundo"
+```
+
+Arquivo `funcoes.sh`:
+
+```bash
+
+saudacao() {
+    echo "Olá, $1!"
+}
+```
 
 
 
