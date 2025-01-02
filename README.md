@@ -60,6 +60,9 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#função-com-retorno">Função com Retorno</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#exemplo-de-utilização">Exemplo de utilização</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp; - <a href="#parâmetros-e-argumentos-do-script">Parâmetros e Argumentos do Script</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#processando-argumentos-com-getopts">Processando Argumentos com getopts</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#função-sem-argumentos-getopts">Função sem argumentos getopts</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#exemplo">Exemplo</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp; - <a href="#input">Input</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp; - <a href="#redirecionamento-e-pipe">Redirecionamento e Pipe</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#entrada-e-saída-padrão">Entrada e Saída Padrão</a><br>
@@ -910,7 +913,28 @@ while true; do
     echo
 done
 ```
+```bash
 
+#!/bin/bash
+
+# Função para exibir uma saudação personalizada
+saudacao() {
+    echo "Olá, $1! Como vai você?"
+}
+
+# Função para calcular a soma de dois números
+soma() {
+    local num1=$1
+    local num2=$2
+    echo "A soma de $num1 e $num2 é $((num1 + num2))."
+}
+
+# Chamada das funções
+saudacao "João"
+soma 5 7
+```
+    Olá, João! Como vai você?
+    A soma de 5 e 7 é 12.
 ## Parâmetros e Argumentos do Script
 
 Scripts Bash podem aceitar argumentos da linha de comando.
@@ -942,7 +966,203 @@ while [[ $# -gt 0 ]]; do
 done
 ```
 
+### Processando Argumentos com getopts
 
+argumentos.sh:
+```bash
+#!/bin/bash
+
+# Função de ajuda
+ajuda() {
+    echo "Uso: $0 [-n nome] [-i idade]"
+    exit 1
+}
+
+# Processa os argumentos
+while getopts "n:i:" opt; do
+    case $opt in
+        n) nome=$OPTARG ;;
+        i) idade=$OPTARG ;;
+        *) ajuda ;;
+    esac
+done
+
+# Verifica se os parâmetros foram fornecidos
+if [[ -z "$nome" || -z "$idade" ]]; then
+    ajuda
+fi
+
+echo "Olá, $nome. Você tem $idade anos."
+```
+
+./argumentos.sh -n Ana -i 30
+
+
+    getopts processa argumentos da linha de comando.
+    OPTARG contém o valor do argumento associado a uma opção.
+
+***Explicação***
+
+ `while getopts "n:i:" opt; do`
+* `getopts`: É usado para analisar argumentos fornecidos ao script. Ele processa argumentos formatados como opções, por exemplo, -n Ana -i 30.
+* `"n:i:"`: Define as opções aceitas pelo script, O : indica que essa opção precisa de um valor (ex.: -n Ana).
+
+    * n: Aceita um argumento obrigatório. 
+    * i: Também aceita um argumento obrigatório (ex.: -i 30).
+    * Se uma opção não estiver listada ou o argumento obrigatorio for omitido, o bloco *) será acionado.
+* `opt` : Variável onde será armazenada a opção atual sendo processada (ex.: n ou i).
+*  `while ... do`: O while percorre todas as opções passadas ao script até que getopts esgote os argumentos fornecidos.
+
+Bloco `case`:
+
+`n) nome=$OPTARG ;;`
+
+
+* `n`): Executa este bloco se opt for n, ou seja, se o argumento for -n.
+* `nome=$OPTARG`: Armazena o valor fornecido para -n (o argumento associado, como Ana) na variável nome.
+    * OPTARG é uma variável automática que contém o argumento da opção processada.
+
+
+`*) ajuda ;;` :Opção Inválida ou Faltando Argumento. O caractere * é um curinga que captura qualquer opção não listada no getopts.Também captura casos onde um argumento obrigatório está ausente (ex.: -n sem valor). Ao ser acionado chama a função ajuda para exibir uma mensagem ao usuário (presumivelmente explicando o uso correto do script).
+
+#### Função sem argumentos getopts 
+
+```bash
+while getopts "na:i:" opt; do
+    case $opt in
+        n) echo "Opção -n ativada sem argumentos";;
+        a) idade=$OPTARG ;;
+        *) ajuda ;;
+    esac
+done
+```
+./script.sh -na Ana
+
+Neste caso, -n e -a podem ser usados juntos (se forem configurados para não exigir argumentos).
+
+Detecção de Fim de Opções: Se houver argumentos adicionais que não são opções (por exemplo, -n Ana arquivo.txt), getopts para de processar ao encontrar o primeiro argumento que não começa com -.
+
+#### Exemplo:
+
+```bash
+
+#!/bin/bash
+
+# Função de ajuda
+ajuda() {
+    echo "Uso: $0 [opções]"
+    echo
+    echo "Opções:"
+    echo "  -n NOME       Define o nome do usuário (opcional)"
+    echo "  -i IDADE      Define a idade do usuário (opcional)"
+    echo "  -h            Exibe esta mensagem de ajuda"
+    echo
+    echo "Exemplo:"
+    echo "  $0 -n Ana -i 25"
+    exit 0
+}
+
+# Variáveis padrão (valores opcionais)
+nome="Usuário"
+idade="Desconhecida"
+
+# Processar argumentos
+while getopts "n:i:h" opt; do
+    case $opt in
+        n) nome=$OPTARG ;;  # Nome fornecido
+        i) idade=$OPTARG ;; # Idade fornecida
+        h) ajuda ;;         # Exibe a ajuda e sai
+        *) ajuda ;;         # Exibe ajuda para argumentos inválidos
+    esac
+done
+
+# Mensagem final
+echo "Olá, $nome! Sua idade é $idade."
+
+```
+
+
+1. Argumentos Não Obrigatórios: As variáveis nome e idade possuem valores padrão (Usuário e Desconhecida). Se o usuário não fornecer -n ou -i, o script usará esses valores.
+2. Função ajuda: ajuda fornece uma descrição clara das opções disponíveis e exemplos de uso. É acionada com a opção -h ou por qualquer entrada inválida.
+3. Comportamento dos Argumentos : -n e -i permitem substituir os valores padrão. O script continua executando mesmo que os argumentos opcionais não sejam fornecidos.
+
+***Exemplos de execução:***
+
+```bash
+$ ./script.sh
+Olá, Usuário! Sua idade é Desconhecida.
+###################################################
+$ ./script.sh -n Ana
+Olá, Ana! Sua idade é Desconhecida.
+###################################################
+$ ./script.sh -n Ana -i 25
+Olá, Ana! Sua idade é 25.
+
+###################################################
+$ ./script.sh -x
+Uso: ./script.sh [opções]
+
+Opções:
+  -n NOME       Define o nome do usuário (opcional)
+  -i IDADE      Define a idade do usuário (opcional)
+  -h            Exibe esta mensagem de ajuda
+
+Exemplo:
+  ./script.sh -n Ana -i 25
+
+###################################################
+$ ./script.sh -h
+Uso: ./script.sh [opções]
+
+Opções:
+  -n NOME       Define o nome do usuário (opcional)
+  -i IDADE      Define a idade do usuário (opcional)
+  -h            Exibe esta mensagem de ajuda
+
+Exemplo:
+  ./script.sh -n Ana -i 25
+
+```
+
+
+```bash
+
+#!/bin/bash
+
+# Função de ajuda
+ajuda() {
+    echo "Uso: $0 [-n NOME] [-i IDADE] [-h]"
+    exit 0
+}
+
+# Variáveis padrão
+nome=""
+idade=""
+
+# Processar argumentos
+while getopts "n:i:h" opt; do
+    case $opt in
+        n) nome=$OPTARG ;;
+        i) idade=$OPTARG ;;
+        h) ajuda ;;
+        *) ajuda ;;
+    esac
+done
+
+# Verificar se argumentos foram fornecidos
+if [[ -z "$nome" ]]; then
+    nome="Visitante" # Nome padrão se não fornecido
+fi
+
+if [[ -z "$idade" ]]; then
+    idade="Indefinida" # Idade padrão se não fornecida
+fi
+
+echo "Olá, $nome! Sua idade é $idade."
+```
+
+    $ ./script.sh
+    Olá, Visitante! Sua idade é Indefinida.
 
 ## Input
 
@@ -965,6 +1185,28 @@ echo "Olá, $nome!"
 read -sp "Digite sua senha: " senha
 echo "\nSenha armazenada com sucesso."
 ```
+
+```bash
+
+#!/bin/bash
+
+# Este script exibe uma saudação personalizada para o usuário.
+
+read -p "Qual é o seu nome? " nome
+
+# Verifica se o usuário digitou algo
+if [[ -z "$nome" ]]; then
+    echo "Você não digitou um nome. Tente novamente."
+    exit 1
+fi
+
+echo "Olá, $nome! Bem-vindo ao mundo do Bash scripting!"
+
+```
+
+Explicação:
+    A verificação [[ -z "$nome" ]] garante que a variável nome não está vazia.
+    exit 1 encerra o script com um código de erro se o usuário não fornecer um nome.
 
 ## Redirecionamento e Pipe
 Você pode redirecionar a saída de um comando para um arquivo ou passar a saída de um comando para outro comando.
@@ -1041,6 +1283,34 @@ tratar_erro() {
 
 trap 'tratar_erro $LINENO' ERR
 ```
+
+```bash
+#!/bin/bash
+
+# Função de erro
+erro() {
+    echo "Erro na linha $1."
+    exit 1
+}
+
+# Configuração de trap para capturar erros
+trap 'erro $LINENO' ERR
+
+# Simulação de erro
+cp arquivo_inexistente.txt destino/
+
+echo "Esta mensagem não será exibida se houver erro."
+
+```
+
+    Saída:
+    Erro na linha 10.
+
+Explicação:
+
+    O comando trap associa o manipulador de erro erro ao evento ERR.
+
+    `$LINENO` retorna o número da linha onde o erro ocorreu.
 
 ### REGEX
 
@@ -1121,6 +1391,7 @@ Exemplo de Script Principal:
 source funcoes.sh
 
 saudacao "Mundo"
+soma 10 20
 ```
 
 Arquivo `funcoes.sh`:
@@ -1130,11 +1401,16 @@ Arquivo `funcoes.sh`:
 saudacao() {
     echo "Olá, $1!"
 }
+
+soma() {
+    echo "$(( $1 + $2 ))"
+}
+
 ```
 
 
-
-
+source importa funções do arquivo funcoes.sh
+Scripts modulares são fáceis de manter e reutilizar.
 
 
 
