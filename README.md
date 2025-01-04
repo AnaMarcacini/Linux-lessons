@@ -832,7 +832,23 @@ saudacao() {
 saudacao
 ```
 
+```bash
+verificar_paridade() {
+    if (( $1 % 2 == 0 )); then
+        echo "$1 é par."
+    else
+        echo "$1 é ímpar."
+    fi
+}
+
+verificar_paridade 4
+verificar_paridade 7
+
+
+```
+
 ### Função com Parametros
+
 ```bash
 funcao_ola() {
   echo "Olá, $1!"
@@ -850,6 +866,16 @@ saudacao "João"
 ```
 
 O $1 representa o primeiro argumento passado para a função. Você pode passar múltiplos parâmetros para funções, como $2, $3, etc.
+```bash
+
+saudar_usuario() {
+    echo "Olá, $1!"
+    echo "É um prazer conhecer você, $2."
+}
+
+# Chamando a função com argumentos
+saudar_usuario "Maria" "Santos"
+```
 
 ### Função com Retorno
 
@@ -864,6 +890,7 @@ soma 3 7
 resultado=$?
 echo "Resultado da soma: $resultado"
 ```
+
 ```bash
 multiplicar() {
     echo $(( $1 * $2 ))
@@ -871,6 +898,20 @@ multiplicar() {
 
 resultado=$(multiplicar 4 5)
 echo "Resultado da multiplicação: $resultado"
+```
+
+```bash
+
+
+soma() {
+    local resultado=$(( $1 + $2 ))
+    return $resultado
+}
+
+soma 3 5
+echo "Código de retorno: $?"  # Mostra o valor retornado
+
+
 ```
 
 ### Exemplo de utilização
