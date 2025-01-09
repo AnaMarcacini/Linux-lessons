@@ -13,6 +13,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp; - <a href="#permissões">Permissões</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#visualizando-permissões">Visualizando Permissões</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#alterando-permissões">Alterando Permissões</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#adicionar-diretório-no-`path`">Adicionar Diretório no `PATH`</a><br>
  - <a href="#partições">Partições</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp; - <a href="#ver-partições">Ver Partições</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#1-usando-o-comando-lsblk">1. Usando o comando lsblk</a><br>
@@ -160,6 +161,30 @@ Ou, se você só precisa que o arquivo seja executável pelo seu usuário:
 
 ```bash
 sudo chmod u+x /usr/local/bin/token
+```
+## Adicionar Diretório no `PATH` 
+
+Exemplo adicionando esse diretório `(/home/ahmarcacini/.local/bin)` no `PATH`
+
+```bash
+nano ~/.bashrc
+```
+
+Coloque no final do arquivo
+
+```bash
+export PATH="$HOME/.local/bin:$PATH"
+```
+
+Salve e feche o editor
+
+Recarregue o arquivo .bashrc para apliacar as mudanças usando `source ~/.bashrc` ou feche e abra um novo terminal
+
+Verificando 
+
+```bash
+ahmarcacini@kurumina-desktop:~/Git/AnaMarcacini/Linux-lessons$ echo $PATH
+/home/ahmarcacini/.local/bin:/home/ahmarcacini/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 ```
 
 # Partições 
