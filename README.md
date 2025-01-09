@@ -14,6 +14,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#visualizando-permissões">Visualizando Permissões</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#alterando-permissões">Alterando Permissões</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp; - <a href="#adicionar-diretório-no-`path`">Adicionar Diretório no `PATH`</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#adicionar-aplicativo-ou-comando-no-menu-de-aplicativos">Adicionar Aplicativo ou Comando no Menu de Aplicativos</a><br>
  - <a href="#partições">Partições</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp; - <a href="#ver-partições">Ver Partições</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#1-usando-o-comando-lsblk">1. Usando o comando lsblk</a><br>
@@ -186,6 +187,42 @@ Verificando
 ahmarcacini@kurumina-desktop:~/Git/AnaMarcacini/Linux-lessons$ echo $PATH
 /home/ahmarcacini/.local/bin:/home/ahmarcacini/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 ```
+## Adicionar Aplicativo ou Comando no Menu de Aplicativos
+
+exemplo para criar um app do mqtt-explorer (snap install mqtt-explorer)
+
+Crie um arquivo `.desktop`:
+
+```bash
+nano ~/.local/share/applications/mqtt-explorer.desktop
+```
+Cole no Arquivo
+```
+[Desktop Entry]
+Name=MQTT Explorer
+Exec=mqtt-explorer
+Icon=mqtt-explorer
+Type=Application
+Categories=Utility;
+```
+
+Atualize o banco de dados de aplicativos:
+
+```bash
+update-desktop-database ~/.local/share/applications
+```
+
+Isso deve fazer com que o MQTT Explorer apareça no menu de aplicativos.
+
+***OBS***
+Arquivos .desktop globais (para todos os usuários): /usr/share/applications/
+
+Arquivos .desktop específicos do usuário: ~/.local/share/applications/
+
+Listando todos os arquivos : `find /usr/share/applications ~/.local/share/applications -name "*.desktop"`
+
+Selecionando o que começa com code : `find /usr/share/applications ~/.local/share/applications -name "code*.desktop"`
+
 
 # Partições 
 ## Ver Partições 
