@@ -14,6 +14,8 @@
   - [Permissões](#permissões)
     - [Visualizando Permissões](#visualizando-permissões)
     - [Alterando Permissões](#alterando-permissões)
+  - [Adicionar Diretório no `PATH`](#adicionar-diretório-no-path)
+  - [Adicionar Aplicativo ou Comando no Menu de Aplicativos](#adicionar-aplicativo-ou-comando-no-menu-de-aplicativos)
 - [Partições](#partições)
   - [Ver Partições](#ver-partições)
     - [1. Usando o comando lsblk](#1-usando-o-comando-lsblk)
@@ -162,6 +164,66 @@ Ou, se você só precisa que o arquivo seja executável pelo seu usuário:
 ```bash
 sudo chmod u+x /usr/local/bin/token
 ```
+## Adicionar Diretório no `PATH` 
+
+Exemplo adicionando esse diretório `(/home/ahmarcacini/.local/bin)` no `PATH`
+
+```bash
+nano ~/.bashrc
+```
+
+Coloque no final do arquivo
+
+```bash
+export PATH="$HOME/.local/bin:$PATH"
+```
+
+Salve e feche o editor
+
+Recarregue o arquivo .bashrc para apliacar as mudanças usando `source ~/.bashrc` ou feche e abra um novo terminal
+
+Verificando 
+
+```bash
+ahmarcacini@kurumina-desktop:~/Git/AnaMarcacini/Linux-lessons$ echo $PATH
+/home/ahmarcacini/.local/bin:/home/ahmarcacini/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+```
+## Adicionar Aplicativo ou Comando no Menu de Aplicativos
+
+exemplo para criar um app do mqtt-explorer (snap install mqtt-explorer)
+
+Crie um arquivo `.desktop`:
+
+```bash
+nano ~/.local/share/applications/mqtt-explorer.desktop
+```
+Cole no Arquivo
+```
+[Desktop Entry]
+Name=MQTT Explorer
+Exec=mqtt-explorer
+Icon=mqtt-explorer
+Type=Application
+Categories=Utility;
+```
+
+Atualize o banco de dados de aplicativos:
+
+```bash
+update-desktop-database ~/.local/share/applications
+```
+
+Isso deve fazer com que o MQTT Explorer apareça no menu de aplicativos.
+
+***OBS***
+Arquivos .desktop globais (para todos os usuários): /usr/share/applications/
+
+Arquivos .desktop específicos do usuário: ~/.local/share/applications/
+
+Listando todos os arquivos : `find /usr/share/applications ~/.local/share/applications -name "*.desktop"`
+
+Selecionando o que começa com code : `find /usr/share/applications ~/.local/share/applications -name "code*.desktop"`
+
 
 # Partições 
 ## Ver Partições 
