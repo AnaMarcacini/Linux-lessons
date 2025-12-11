@@ -2,88 +2,89 @@
 
 ## Index 🐧
 
-<table style="border-collapse: collapse; border: none;">
-  <tr>
-    <td style="vertical-align: top; text-align: left; border: none;">
-<!-- INDICE -->
- - <a href="#básicos">Básicos</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#sistema-de-arquivos">Sistema de Arquivos</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#comandos-basicos">Comandos Basicos</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#listar-arquivos">Listar Arquivos</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#permissões">Permissões</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#visualizando-permissões">Visualizando Permissões</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#alterando-permissões">Alterando Permissões</a><br>
- - <a href="#partições">Partições</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#ver-partições">Ver Partições</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#1-usando-o-comando-lsblk">1. Usando o comando lsblk</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#2-usando-o-comando-fdisk">2. Usando o comando fdisk</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#3-usando-o-comando-df">3. Usando o comando df</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#4-usando-o-parted">4. Usando o parted</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#5-com-gui-se-você-prefere-interface-gráfica">5. Com GUI (Se você prefere interface gráfica)</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#gparted">GParted</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#discos-gnome-disks">Discos (gnome-disks)</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#montar-partição">Montar Partição</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#montar-a-partição-caso-não-esteja-montada">Montar a Partição (Caso Não Esteja Montada)</a><br>
- - <a href="#criar-programas-personalizados">Criar programas Personalizados</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#cuidado-com-o-interpretador">Cuidado com o interpretador</a><br>
- - <a href="#verificar-origem-do-programa">Verificar origem do programa</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#ir-para-esse-repo">ir para esse repo</a><br>
- - <a href="#redirecionamento-e-pipes">Redirecionamento e pipes</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#redirecionando-a-saída-para-um-arquivo">Redirecionando a saída para um arquivo</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#redirecionando-de-entrada">Redirecionando de Entrada</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#redirecionamento-de-erros-2>-e-2>>">Redirecionamento de Erros (2> e 2>>)</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#redirecionamento-de-saída-e-erros-&>-ou-2>&1">Redirecionamento de Saída e Erros (&> ou 2>&1)</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#entrada-e-saída-padrão">Entrada e Saída Padrão</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#pipes-`|`">Pipes (`|`)</a><br>
- - <a href="#variáveis">Variáveis</a><br>
- - <a href="#operadores-bash">Operadores Bash</a><br>
- - <a href="#operadores-de-comparação">Operadores de Comparação</a><br>
- - <a href="#operadores-de-strings">Operadores de Strings</a><br>
- - <a href="#scripts-bash">Scripts Bash</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#operações-matemáticas">Operações Matemáticas</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#operadores-lógicos">Operadores Lógicos</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#comparadores-numéricos">Comparadores Numéricos</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#operadores-de-comparação-de-strings">Operadores de Comparação de Strings</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#comparadores-de-arquivos">Comparadores de Arquivos</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#variaveis">Variaveis</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#variaveis-locais-e-globais-escopo">Variaveis Locais e Globais (Escopo)</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#operações">Operações</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#if-else">If-else</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#com-operador-lógico">Com operador lógico</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#loops">LOOPs</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#loop-usando-o-for">Loop usando o For</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#loop-usando-o-while">Loop usando o While</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#loop-usando-o-until">Loop usando o until</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#switch-case">Switch Case</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#funções">Funções</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#função-com-parametros">Função com Parametros</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#função-com-retorno">Função com Retorno</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#exemplo-de-utilização">Exemplo de utilização</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#parâmetros-e-argumentos-do-script">Parâmetros e Argumentos do Script</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#processando-argumentos-com-getopts">Processando Argumentos com getopts</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#função-sem-argumentos-getopts">Função sem argumentos getopts</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#exemplo">Exemplo</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#input">Input</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#redirecionamento-e-pipe">Redirecionamento e Pipe</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#entrada-e-saída-padrão">Entrada e Saída Padrão</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#captura-de-erros">Captura de erros</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#tratamento-de-erros">Tratamento de Erros</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#interromper-o-script-em-caso-de-erros">Interromper o Script em Caso de Erros</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#verificar-status-de-saída-do-comando">Verificar Status de Saída do Comando</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#função-de-tratamento-de-erro">Função de Tratamento de Erro</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#regex">REGEX</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#depuração-de-scripts">Depuração de Scripts</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#manipulando-arquivos">Manipulando Arquivos</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#ler-arquivos">Ler Arquivos</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#lendo-um-arquivo-linha-por-linha">Lendo um arquivo linha por linha</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#ler-primeiras-e-ultimas-linhas">Ler primeiras e ultimas linhas</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp; - <a href="#scripts-modulares---chamando-outros-scripts">Scripts Modulares - Chamando outros Scripts</a><br>
-   </td>
-    <td style="vertical-align: top; border: none;">
-      <img src="src/pinguim/Linux1.gif" alt="Pinguim animado" width="200"/>
-    </td>
-  </tr>
-</table>
+<img align="right" src="src/pinguim/Linux1.gif" width="300"/> 
+
+
+<!-- [fim do cabeçalho] -->
+
+- [Básicos](#básicos)
+  - [Sistema de Arquivos](#sistema-de-arquivos)
+  - [Comandos Basicos](#comandos-basicos)
+  - [Listar Arquivos](#listar-arquivos)
+  - [Permissões](#permissões)
+    - [Visualizando Permissões](#visualizando-permissões)
+    - [Alterando Permissões](#alterando-permissões)
+- [Partições](#partições)
+  - [Ver Partições](#ver-partições)
+    - [1. Usando o comando lsblk](#1-usando-o-comando-lsblk)
+    - [2. Usando o comando fdisk](#2-usando-o-comando-fdisk)
+    - [3. Usando o comando df](#3-usando-o-comando-df)
+    - [4. Usando o parted](#4-usando-o-parted)
+    - [5. Com GUI (Se você prefere interface gráfica)](#5-com-gui-se-você-prefere-interface-gráfica)
+      - [GParted](#gparted)
+      - [Discos (gnome-disks)](#discos-gnome-disks)
+  - [Montar Partição](#montar-partição)
+    - [Montar a Partição (Caso Não Esteja Montada)](#montar-a-partição-caso-não-esteja-montada)
+- [Criar programas Personalizados](#criar-programas-personalizados)
+  - [Cuidado com o interpretador](#cuidado-com-o-interpretador)
+- [Verificar origem do programa](#verificar-origem-do-programa)
+  - [ir para esse repo](#ir-para-esse-repo)
+- [Redirecionamento e pipes](#redirecionamento-e-pipes)
+  - [Redirecionando a saída para um arquivo](#redirecionando-a-saída-para-um-arquivo)
+  - [Redirecionando de Entrada](#redirecionando-de-entrada)
+  - [Redirecionamento de Erros (2> e 2>>)](#redirecionamento-de-erros-2>-e-2>>)
+  - [Redirecionamento de Saída e Erros (&> ou 2>&1)](#redirecionamento-de-saída-e-erros-&>-ou-2>&1)
+  - [Entrada e Saída Padrão](#entrada-e-saída-padrão)
+  - [Pipes (`|`)](#pipes-)
+- [Variáveis](#variáveis)
+- [Operadores Bash](#operadores-bash)
+- [Operadores de Comparação](#operadores-de-comparação)
+- [Operadores de Strings](#operadores-de-strings)
+- [Scripts Bash](#scripts-bash)
+  - [Operações Matemáticas](#operações-matemáticas)
+  - [Operadores Lógicos](#operadores-lógicos)
+  - [Comparadores Numéricos](#comparadores-numéricos)
+  - [Operadores de Comparação de Strings](#operadores-de-comparação-de-strings)
+  - [Comparadores de Arquivos](#comparadores-de-arquivos)
+  - [Variaveis](#variaveis)
+    - [Variaveis Locais e Globais (Escopo)](#variaveis-locais-e-globais-escopo)
+  - [Operações](#operações)
+  - [If-else](#if-else)
+    - [Com operador lógico](#com-operador-lógico)
+  - [LOOPs](#loops)
+    - [Loop usando o For](#loop-usando-o-for)
+    - [Loop usando o While](#loop-usando-o-while)
+    - [Loop usando o until](#loop-usando-o-until)
+  - [Switch Case](#switch-case)
+  - [Funções](#funções)
+    - [Função com Parametros](#função-com-parametros)
+    - [Função com Retorno](#função-com-retorno)
+    - [Exemplo de utilização](#exemplo-de-utilização)
+  - [Parâmetros e Argumentos do Script](#parâmetros-e-argumentos-do-script)
+    - [Processando Argumentos com getopts](#processando-argumentos-com-getopts)
+      - [Função sem argumentos getopts](#função-sem-argumentos-getopts)
+      - [Exemplo](#exemplo)
+  - [Input](#input)
+  - [Redirecionamento e Pipe](#redirecionamento-e-pipe)
+    - [Entrada e Saída Padrão](#entrada-e-saída-padrão)
+  - [Captura de erros](#captura-de-erros)
+  - [Tratamento de Erros](#tratamento-de-erros)
+    - [Interromper o Script em Caso de Erros](#interromper-o-script-em-caso-de-erros)
+    - [Verificar Status de Saída do Comando](#verificar-status-de-saída-do-comando)
+    - [Função de Tratamento de Erro](#função-de-tratamento-de-erro)
+    - [REGEX](#regex)
+  - [Depuração de Scripts](#depuração-de-scripts)
+  - [Manipulando Arquivos](#manipulando-arquivos)
+    - [Ler Arquivos](#ler-arquivos)
+    - [Lendo um arquivo linha por linha](#lendo-um-arquivo-linha-por-linha)
+    - [Ler primeiras e ultimas linhas](#ler-primeiras-e-ultimas-linhas)
+  - [Scripts Modulares - Chamando outros Scripts](#scripts-modulares---chamando-outros-scripts)
+
+
+<!-- [fim do indice] -->
+
+
+
 
 # Básicos
 ## Sistema de Arquivos 
